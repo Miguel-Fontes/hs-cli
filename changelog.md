@@ -6,18 +6,14 @@
 
 - [Changelog](#changelog)
     - [Contents](#contents)
-    - [Unreleased](#unreleased)
+    - [v0.1.0 Unreleased](#v010-unreleased)
 
 <!-- /TOC -->
 
-## Unreleased
+## v0.1.0 Unreleased
 
-**Release notes:**
+**Features:**
 
-**Major changes:**
-
-**Behavior changes:**
-
-**Other enhancements:**
+**Improvements:**
 
 **Bugfixes:**
