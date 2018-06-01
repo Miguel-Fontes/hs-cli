@@ -1,5 +1,5 @@
 name:                hs-cli
-version:             0.1.0.0
+version:             0.1.0
 synopsis:            A simple framework for developing Command Line applications
 homepage:            https://github.com/Miguel-Fontes/hs-cli#readme
 license:             BSD3
