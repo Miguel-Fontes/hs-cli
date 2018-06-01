@@ -34,4 +34,4 @@ TBD
 
 ## Contributing
 
-TBD
+Take a shot on the application roadmap on the issues, and feel free to drop a message, a PR or the bass!
