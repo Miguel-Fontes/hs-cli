@@ -16,4 +16,7 @@
 
 **Improvements:**
 
+- Travis CI integrated, with slack notifications
+- Added Readme with build instructions, contribution and build status
+
 **Bugfixes:**

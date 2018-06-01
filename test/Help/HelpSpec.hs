@@ -19,19 +19,19 @@ spec = do
       context "Usage" $ do
           context "Single Option" $ do
             it "Should return a formatted string with command usage information" $ do
-                usage $ Command "my-application" [OptionGroup "Test" [Single "--ef" ""]
-                                                  ,OptionGroup "Test" [Single "--exts" ""]]
+                usage $ Command "my-application" [OptionGroup "Test" [Single "--ef" "Exclude file"]
+                                                  ,OptionGroup "Test" [Single "--exts" "Only extensions"]]
                 `shouldBe` "my-application [[--ef]] [[--exts]]\n\n"
 
           context "Extended Option" $ do
             it "Should return a formatted string with command usage information" $ do
-                usage $ Command "my-application" [OptionGroup "Test" [Extended ["--ef", "--exclude-files"] ""], OptionGroup "Test" [Extended ["--exts", "--only-extensions"] ""]]
+                usage $ Command "my-application" [OptionGroup "Test" [Extended ["--ef", "--exclude-files"] "Exclude file"], OptionGroup "Test" [Extended ["--exts", "--only-extensions"] "Only extensions"]]
                 `shouldBe` "my-application [[--ef]] [[--exts]]\n\n"
 
           context "Mixed Option" $ do
             it "Should return a formatted string with command usage information" $ do
-                usage $ Command "my-application" [OptionGroup "Test" [Extended ["--ef", "--exclude-files"] ""]
-                                                  ,OptionGroup "Test"  [Single "--exts" ""]]
+                usage $ Command "my-application" [OptionGroup "Test" [Extended ["--ef", "--exclude-files"] "Exclude file"]
+                                                  ,OptionGroup "Test"  [Single "--exts" "Only extensions"]]
                 `shouldBe` "my-application [[--ef]] [[--exts]]\n\n"
 
           context "Several Options" $ do
