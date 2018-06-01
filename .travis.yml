@@ -1,0 +1,36 @@
+language: haskell
+ghc:
+- 8.2.2
+before_install:
+- mkdir -p ~/.local/bin
+- export PATH=$HOME/.local/bin:$PATH
+- travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards
+  --strip-components=1 -C ~/.local/bin '*/stack'
+- stack config set system-ghc --global true
+- export PATH=/opt/ghc/8.2.2/bin:$PATH
+install:
+- stack install --test
+sudo: false
+script:
+- stack --no-terminal --skip-ghc-check test
+before_cache:
+- rm -fv $HOME/.cabal/packages/hackage.haskell.org/build-reports.log
+- rm -fv $HOME/.cabal/packages/hackage.haskell.org/00-index*
+- rm -fv $HOME/.cabal/packages/hackage.haskell.org/01-index*
+- rm -fv $HOME/.cabal/packages/hackage.haskell.org/*.json
+cache:
+  directories:
+  - "$HOME/.stack"
+  - "$HOME/.ghc"
+  - "$HOME/.cabal"
+  - "$HOME/.stack/bin"
+  - "$HOME/.stack/precompiled"
+  - "$HOME/.stack/programs"
+  - "$HOME/.stack/setup-exe-cache"
+  - "$HOME/.stack/snapshots"
+  - "/opt/ghc/8.2.2/bin"
+notifications:
+  slack:
+    on_success: always
+    on_failure: always
+    secure: 5CGGrTmtxvTqSloh454cBsV6lYs8YJaJqXoiKR7MMP4k+G+u5OZZxxXPaItsomLFIF5JmW4O3BzD0AP0vhdDL93dJz+zfFnkZ2OkCGiKSbO/KXVc3TRI9aPDPFl+MLr5xUEKE/4wtk8ZI0vFiJkY3rvS2cEviElgNR0D8ZIBT7GZe3HEElYismelbjmzED8IjJKp6PoBBWGfBgCtEQHXRnZpx4Y3KDHcRi59l6DJhSM/YsOPdt6hvSHABE3g+EoVDt9YGYzdGfiLKOnlumWxvTLn2IIWucfUCkAS7mUckeEU7vJrrlvzLFcdm/vH0EYb86rq/MQr7ZCqkTfiQ5Qt2iIu4R3ugvx1Chh7P8RUzfN/BClmKMlDDAEmLtuMTXRehdPmnw8XzG4oGNScV8P6rZco4WMb+MHxrJ4gRvxGV6IKVPnA2KfA4gVvjLniRLrEji2SaFj8lnOzEnHtguNbftWf4s4vR8YXq35xYE+M2PbR4/dPahIj2OvH3yYd+17bON+bip6L1txn3pcIJh5USa+PbXUkE0c1IFh7GNM1mpQsJtsD7HHRNI4T2VjKZ4TlGNbhCoWV9LRTcWYJcTWUekyYfwZ/s/bP86XpseP39miWIqcKSO9d0qglHRLbzpZkv1BKIyuEMTi2pCth43wnwsToKe0OqIwhxrQGvwf+5Lo=
